@@ -1,7 +1,7 @@
 #include "Facebook2.h"
 #include <deque>
 
-vector<int> getSorted(BlackBox &B)
+vector<int> getSorted(BlackBox &B)				// Using deque
 {
     deque<int> l, r;
 
@@ -30,6 +30,36 @@ vector<int> getSorted(BlackBox &B)
 }
 
 
+vector<int> getSortedArray(BlackBox &B)
+{
+	vector<int> l, r;
+
+	while (!B.isempty())
+	{
+		if (l.empty() || l.back() <= B.peek())
+			l.push_back(B.pop());
+		else // l.back() > B.peek()
+		{
+			while (!l.empty() && l.back() > B.peek())
+			{
+				r.push_back(l.back());
+				l.pop_back();
+			}
+
+			l.push_back(B.pop());
+		}
+	}
+	
+	while (!r.empty())
+	{
+		l.push_back(r.back());
+		r.pop_back();
+	}
+	
+	return l;
+}
+
+
 int main(int argc, char *argv[])
 {
     int n = 10;
@@ -39,7 +69,7 @@ int main(int argc, char *argv[])
 
     BlackBox b(n);
 
-    vector<int> res = getSorted(b);
+    vector<int> res = getSortedArray(b);
 
     for (int i=0; i<res.size(); i++)
         cout << res[i] << ", ";
