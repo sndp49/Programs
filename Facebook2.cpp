@@ -1,6 +1,7 @@
 #include "Facebook2.h"
 #include <deque>
 
+/*  // Using deque
 vector<int> getSorted(BlackBox &B)
 {
     deque<int> l, r;
@@ -27,6 +28,37 @@ vector<int> getSorted(BlackBox &B)
     res.insert(res.end(), r.begin(), r.end());
 
     return res;
+}
+*/
+
+
+vector<int> getSorted(BlackBox &B)
+{
+	vector<int> l, r;
+
+	while (!B.isempty())
+	{
+		if (l.empty() || l.back() <= B.peek())
+			l.push_back(B.pop());
+		else // l.back() > B.peek()
+		{
+			while (!l.empty() && l.back() > B.peek())
+			{
+				r.push_back(l.back());
+				l.pop_back();
+			}
+
+			l.push_back(B.pop());
+		}
+	}
+	
+	while (!r.empty())
+	{
+		l.push_back(r.back());
+		r.pop_back();
+	}
+	
+	return l;
 }
 
 
