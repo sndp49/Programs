@@ -12,9 +12,9 @@ class NestedInteger
 
 public:
 
-    NestedInteger(int v)                                    : data(make_shared<int>(v)), type(0)                    { cout << "Integer..." << endl; }
-    NestedInteger(string s)                                 : data(make_shared<string>(s)), type(1)                 { cout << "String..." << endl; }
-    NestedInteger(const initializer_list<NestedInteger>& l) : data(make_shared<vector<NestedInteger>>(l)), type(2)  { cout << "Nested..." << endl; }
+    NestedInteger(int v)                                    : data(make_shared<int>(v)), type(0)                    { }
+    NestedInteger(string s)                                 : data(make_shared<string>(s)), type(1)                 { }
+    NestedInteger(const initializer_list<NestedInteger>& l) : data(make_shared<vector<NestedInteger>>(l)), type(2)  { }
 
     bool isInteger()    { return (this->type == 0); }
     int  getInteger()   { return *(static_pointer_cast<int>(data)); }
