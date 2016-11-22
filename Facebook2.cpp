@@ -30,7 +30,7 @@ vector<int> getSorted(BlackBox &B)				// Using deque
 }
 
 
-vector<int> getSortedArray(BlackBox &B)
+vector<int> getSortedArray(BlackBox &B)				// using vectors
 {
 	vector<int> l, r;
 

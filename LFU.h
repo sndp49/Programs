@@ -49,7 +49,7 @@ public:
 
     bool insert(const int, const int);
 
-    int getValue(const int);
+    int get(const int);
 
     void print();
 };
@@ -105,12 +105,13 @@ bool LFU::insert(const int k, const int v)
 }
 
 
-int LFU::getValue(const int k)
+int LFU::get(const int k)
 {
     if (cache.find(k) == cache.end())
     {
         cout << "\nError: Key not found" << endl;
-        assert(0);
+        return -1;
+        //assert(0);
     }
 
     node* cur = cache[k];
